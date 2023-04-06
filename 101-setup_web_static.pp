@@ -1,6 +1,6 @@
 # Puppet for setup
 
-$nginx_conf = "server {
+$nginx_configuration = "server {
     listen 80 default_server;
     listen [::]:80 default_server;
     add_header X-Served-By ${hostname};
@@ -9,9 +9,6 @@ $nginx_conf = "server {
     location /hbnb_static {
         alias /data/web_static/current;
         index index.html index.htm;
-    }
-    location /redirect_me {
-        return 301 http://linktr.ee/firdaus_h_salim/;
     }
     error_page 404 /404.html;
     location /404 {
@@ -79,7 +76,7 @@ file { '/var/www':
 
 -> file { '/etc/nginx/sites-available/default':
   ensure  => 'present',
-  content => $nginx_conf
+  content => $nginx_configuration
 }
 
 -> exec { 'nginx restart':

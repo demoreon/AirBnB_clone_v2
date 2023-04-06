@@ -6,18 +6,18 @@ from fabric.api import local
 from fabric.api import put
 from fabric.api import run
 
-env.hosts = ['100.25.19.204', '54.157.159.85']
+env.hosts = ['18.209.223.150', '54.174.240.130']
 
 
 def do_pack():
-    """Create a tar gzipped archive of the directory web_static."""
-    dt = datetime.utcnow()
-    file = "versions/web_static_{}{}{}{}{}{}.tgz".format(dt.year,
-                                                         dt.month,
-                                                         dt.day,
-                                                         dt.hour,
-                                                         dt.minute,
-                                                         dt.second)
+    """This function creates a tar gzipped archive of the web_static dir"""
+    date_ = datetime.utcnow()
+    file = "versions/web_static_{}{}{}{}{}{}.tgz".format(date_.year,
+                                                         date_.month,
+                                                         date_.day,
+                                                         date_.hour,
+                                                         date_.minute,
+                                                         date_.second)
     if os.path.isdir("versions") is False:
         if local("mkdir -p versions").failed is True:
             return None
@@ -27,13 +27,12 @@ def do_pack():
 
 
 def do_deploy(archive_path):
-    """Distributes an archive to a web server.
+    """Distributes my generated tar file to my web server.
 
     Args:
-        archive_path (str): The path of the archive to distribute.
-    Returns:
-        If the file doesn't exist at archive_path or an error occurs - False.
-        Otherwise - True.
+        archive_path (str): The archive to distribute.
+    Returns: True or false
+
     """
     if os.path.isfile(archive_path) is False:
         return False
