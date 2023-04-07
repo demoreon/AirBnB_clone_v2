@@ -7,13 +7,13 @@ from datetime import date
 def do_pack():
     """ This script generates an archive using the contents of web_static """
 
-    fname = strftime("%Y%m%d%H%M%S")
+    filename = strftime("%Y%m%d%H%M%S")
     try:
         local("mkdir -p versions")
         local("tar -czvf versions/web_static_{}.tgz web_static/"
-              .format(fname))
+              .format(filename))
 
-        return "versions/web_static_{}.tgz".format(fname)
+        return "versions/web_static_{}.tgz".format(filename)
 
     except Exception as e:
         return None
