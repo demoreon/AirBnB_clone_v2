@@ -31,11 +31,11 @@ def do_deploy(archive_path):
         put(archive_path, "/tmp/")
         run("sudo mkdir -p {}".format(newest_version))
         # Uncompresses and delete the .tgz archieve
-        run("sudo tar -xzf {} -C {}/".format(archived_file,newest_version))
+        run("sudo tar -xzf {} -C {}/".format(archived_file, newest_version))
         # Delete archieve
         run("sudo rm {}".format(archived_file))
         # Move the newest version
-        run("sudo mv {}/web_static/* {}".format(newest_version, newest_version))
+        run("sudo mv {}/web_static/*{}".format(newest_version, newest_version))
         # removes the new version
         run("sudo rm -rf {}/web_static".format(newest_version))
         run("sudo rm -rf /data/web_static/current")
@@ -44,5 +44,5 @@ def do_deploy(archive_path):
         print("New version deployed!")
 
         return True
-    except:
+    except Exception as Er:
         return False
