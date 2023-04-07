@@ -2,18 +2,16 @@
 import os
 from fabric.api import *
 
-env.hosts = ['100.25.19.204', '54.157.159.85']
+env.hosts = ['18.209.223.150', '54.174.240.130']
 
 
 def do_clean(number=0):
-    """Delete out-of-date archives.
+    """Removes unused tar files.
 
     Args:
-        number (int): The number of archives to keep.
+        number (int): Archives to be skipped.
 
-    If number is 0 or 1, keeps only the most recent archive. If
-    number is 2, keeps the most and second-most recent archives,
-    etc.
+    This keeps only the most used archieves.
     """
     number = 1 if int(number) == 0 else int(number)
 
