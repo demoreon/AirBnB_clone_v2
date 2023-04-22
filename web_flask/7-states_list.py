@@ -14,10 +14,9 @@ def teardown_session(exception):
     storage.close()
 
     @app.route('/states_list', strict_slashes=False)
-    def display_html():
-        """ A swift function call"""
-        data = storage.all(State)
-            return render_template('7-states_list.html', total=data.values())
-
+def display_html():
+    """ A swift function call"""
+    data = storage.all(State)
+    return render_template('templates/7-states_list.html', total=data.values())
     if _fg_name__ == "__main__":
         app.run(host='0.0.0.0', port=5000)
