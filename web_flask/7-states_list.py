@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-
 """
-A Simple flask web application that lists states
+This module defines a Flask application that lists states.
 """
 
 from flask import Flask, render_template
@@ -13,17 +12,13 @@ app.url_map.strict_slashes = False
 
 @app.teardown_appcontext
 def close_storage(exception=None):
-    """
-    Closes the current SQLAlchemy session
-    """
+    """Closes the current SQLAlchemy session."""
     storage.close()
 
 
 @app.route('/states_list')
 def state_list():
-    """
-    Returns a rendered HTML template
-    """
+    """Returns a rendered HTML template."""
     from models.state import State
     states = storage.all(State).values()
     return render_template('7-states_list.html', states=states)
