@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-"""This script processes a Flask web APP.
+"""A simple FW application.
 
-The APP listens on 0.0.0.0, port 5000.
+The application listens on 0.0.0.0, port 5000.
 Routes:
     /: Displays 'Hello HBNB!'.
     /hbnb: Displays 'HBNB'.
