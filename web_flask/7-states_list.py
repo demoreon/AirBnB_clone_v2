@@ -1,12 +1,9 @@
 #!/usr/bin/python3
-"""A Simple flask web application that lists states"""
-
 from flask import Flask, render_template
 from models import storage
-
-
 app = Flask(__name__)
 app.url_map.strict_slashes = False
+"""A Simple flask web application that lists states"""
 
 
 @app.teardown_appcontext
