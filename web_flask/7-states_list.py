@@ -15,16 +15,13 @@ app.url_map.strict_slashes = False
 
 @app.teardown_appcontext
 def close_db(exc):
-    """close the current session of sqlalchemist"""
+    """ close the current session of sqlalchemist """
     storage.close()
 
 
 @app.route('/states_list')
 def states_list():
-    """
-    Displays an HTML page with a list of all State objects in DBStorage.
-    States are sorted by name.
-    """
+    """ States are sorted by name. """
     states = storage.all(State).values()
     return render_template("7-states_list.html", states=states)
 
